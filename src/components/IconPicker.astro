@@ -1,0 +1,41 @@
+---
+import Icon from './icons/Icon.astro';
+
+interface Props {
+	title: string
+	class?: string
+        icon_name?: string
+}
+
+const {title, class: className, icon_name} = Astro.props;
+---
+<div class=
+{
+	`
+        flex flex-col items-center justify-between
+        ${className}
+        `
+}>
+	<div
+
+	 class= {
+		`
+			bg-secondary 
+			flex justify-center items-center
+			rounded-3xl
+			border-b-[6px] border-r-[6px] border-tertiary box-border
+			shadow-black/40 shadow-md
+			size-28
+		`
+	 }
+	>
+                <input type="button" class="bg-inherit">
+                {(icon_name !== undefined) &&
+                        <Icon name={icon_name} class="size-full p-5 text-white stroke-1"/>
+                }
+
+        </div>
+        
+
+	<p>{title}</p>
+</div>

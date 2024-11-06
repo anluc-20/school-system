@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Icon from '../components/icons/Icon.astro';
+import { type CardData} from '../models/CardData';
+import { type SubjectCardResponse, SUBJECT_CARD_API_URL } from '../components/response/SubjectCard';
+import CardAddNew from '../components/CardAddNew.astro';
+
+
+export const prerender = false;
+
+const response = await fetch(SUBJECT_CARD_API_URL).then((response) => response.json())
+const data: SubjectCardResponse[] = response.data
+const CARDS: CardData[] = data.map((card) => {
+  return {
+    title: card.subject_Name,
+    icon: card.icon_Name
+  }
+})
+// console.log(data)
+
+---
+
+<Layout title="MATERIAS">
+	<nav class="flex flex-wrap justify-evenly pt-6 gap-y-3">
+    <CardAddNew title="Nueva materia" href="/add_subject" card_class="size-28" icon_class="size-full p-5 text-white stroke-1"/>
+    {
+      CARDS.map(card => (
+        <a href={card.href}>
+          <Card class="size-28" title={card.title}>
+            <Icon name={card.icon} class="size-full p-5 text-white stroke-1"/>
+          </Card>
+        </a>
+      ))
+    }
+	</nav>
+</Layout>
+
+<style>
+	
+</style>

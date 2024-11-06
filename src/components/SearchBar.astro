@@ -1,0 +1,22 @@
+---
+import Icon from './icons/Icon.astro'
+
+interface Props {
+        title: string,
+}
+const title = Astro.props.title
+
+---
+<div class="
+        flex justify-evenly space-x-5
+        rounded-xl
+        bg-secondary
+        mx-auto w-fit px-2
+        relative bottom-3
+        border-tertiary box-border border-4
+        text-white
+">
+        <input class="text-white bg-inherit " placeholder={title}>
+        </input>
+        <Icon name='search' class='size-8 p-1'/>
+</div>

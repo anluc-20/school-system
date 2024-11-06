@@ -1,0 +1,36 @@
+---
+
+interface Props {
+        text: string;
+        class?: string;
+}
+
+const {text, class: className} = Astro.props;
+---
+
+<div class= {
+        `
+                bg-tertiary
+                flex justify-center items-center
+		rounded-3xl
+		border-b-[4px] border-[#0e858b] box-border
+		shadow-black/40 shadow-md
+                overflow-hidden
+                ${className}
+        `
+}>
+        <input type="button" value={text}  class="bg-inherit text-wrap bg"/>
+</div>
+<script>
+        const input = document.querySelector('input');
+        var clicked = false
+        input?.addEventListener('click', () => {
+                clicked = !clicked
+                if(clicked) {
+                        document.documentElement.style.setProperty('--popup-menu-top', '60%');
+                }
+                else {
+                        document.documentElement.style.setProperty('--popup-menu-top', '100%');
+                }
+        })
+</script>

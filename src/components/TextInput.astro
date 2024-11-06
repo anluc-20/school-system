@@ -1,0 +1,22 @@
+---
+
+interface Props {
+        class?: string;
+        place_holder?: string;
+}
+
+const {class: className, place_holder} = Astro.props;
+
+---
+
+<div class= {
+        `
+                bg-secondary
+                rounded-lg
+                border-b-4 border-tertiary
+                p-1
+                ${className}
+        `
+}>
+<textarea placeholder={place_holder} class="bg-inherit text-gray-400 text-center size-full"/>
+</div>

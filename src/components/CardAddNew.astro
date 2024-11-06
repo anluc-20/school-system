@@ -1,0 +1,20 @@
+---
+import Card from "./Card.astro";
+import Icon from "./icons/Icon.astro";
+
+export interface Props {
+        title: string,
+        href: string,
+        card_class?: string,
+        icon_class?: string
+}
+
+const {title, href, card_class, icon_class} = Astro.props;
+---
+
+
+<a href={href} class="basis-full">
+        <Card class={card_class} title={title}>
+                <Icon name="circle_plus" class={icon_class}></Icon>
+        </Card>
+</a>

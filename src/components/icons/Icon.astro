@@ -1,0 +1,52 @@
+---
+import BooksIcon from "./BooksIcon.astro";
+import FacebookIcon from "./FacebookIcon.astro";
+import TwitterIcon from "./TwitterIcon.astro";
+import UsersIcon from "./UsersIcon.astro";
+import NumbersIcon from "./NumbersIcon.astro";
+import SettingsIcon from "./SettingsIcon.astro";
+import SearchIcon from "./SearchIcon.astro";
+import BookIcon from "./BookIcon.astro";
+import ClipboardListIcon from "./ClipboardListIcon.astro";
+import RouteIcon from "./RouteIcon.astro";
+import CirclePlusIcon from "./CirclePlusIcon.astro";
+
+interface Props {
+        name: string;
+        class?: string;
+}
+
+// Define el tipo del mapeo de iconos
+const iconMap: Record<string, any> = {
+    books: BooksIcon,
+    users: UsersIcon,
+    facebook: FacebookIcon,
+    twitter: TwitterIcon,
+    numbers: NumbersIcon,
+    settings: SettingsIcon,
+    search: SearchIcon,
+    book: BookIcon,
+    clipboard_list: ClipboardListIcon,
+    route: RouteIcon,
+    circle_plus: CirclePlusIcon
+};
+
+
+// Usa el tipo IconName para asegurarse de que `Astro.props.name` sea uno de los valores válidos
+const IconComponent = iconMap[Astro.props.name];
+---
+
+<svg
+  {...Astro.props}
+  xmlns="http://www.w3.org/2000/svg"
+  width="44"
+  height="44"
+  viewBox="0 0 24 24"
+  stroke-width="1.5"
+  stroke="currentColor"
+  fill="none"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+        <IconComponent />
+</svg>

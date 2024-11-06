@@ -1,0 +1,47 @@
+---
+import Card from "./Card.astro";
+import CardAlt from "./CardAlt.astro";
+import Icon from "./icons/Icon.astro";
+import SearchBar from "./SearchBar.astro";
+
+interface Cards {
+        title: string;
+        href?: string;
+        icon?: string;
+}
+interface Props {
+        cards: Cards[];
+        class?: string;
+}
+
+const {class: className, cards} = Astro.props;
+
+---
+
+<nav class={`
+        fixed top-1/2 bg-primary
+        w-full h-full
+        ${className}
+`}>
+        <SearchBar title="Titulo" />
+        <section class="flex flex-wrap justify-evenly gap-y-4">
+                {
+                        cards.map((card) => (
+                                <a href={card.href}>
+                                        {(card.icon !== undefined) &&
+                                                <Card title={card.title}>
+                                                        <Icon name={card.icon!} class="size-full p-5 text-white stroke-1"/>
+                                                </Card>
+                                        }
+                                        {(card.icon === undefined) &&
+                                                <CardAlt class="w-40" title={card.title}>
+                                                </CardAlt>
+                                        }
+                                </a>
+                        ))
+                }
+        </section>
+</nav>
+<script>
+        addEventListener("popup", ()=> {console.log("el boton se ha presionado")})
+</script>

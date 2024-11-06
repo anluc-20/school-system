@@ -1,0 +1,65 @@
+---
+import Button from "../components/Button.astro";
+import ButtonAlt from "../components/ButtonAlt.astro";
+import Card from "../components/Card.astro";
+import IconPicker from "../components/IconPicker.astro";
+import PopupMenu from "../components/PopupMenu.astro";
+import TextInput from "../components/TextInput.astro";
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.tsx"
+import type { CardData } from "../models/CardData";
+
+
+const CARDS: CardData[] = [
+  {
+    title: "Materias",
+    href: "/subjects",
+    icon: "book",
+  },
+  {
+    title: "Planes de estudio",
+    href: "/study_plans",
+    icon: "route",
+  },
+  {
+    title: "Alumnos",
+    icon: "users",
+  },
+  {
+    title: "Profesores",
+    icon: "users",
+  },
+  {
+    title: "Comisiones",
+    icon: "clipboard_list",
+  },
+  {
+    title: "Settings",
+    icon: "settings",
+  },
+];
+
+---
+
+<Layout title="AÑADIR MATERIA">
+        <section>
+                <TextInput place_holder="Nombre de la materia" class="row-start-1 row-span-1 col-start-1 col-span-1"></TextInput>
+                <ButtonAlt text="Seleccionar Plan De Estudio" class="row-start-2 row-span-1 col-start-1 col-span-1"></Button>
+                <IconPicker title="Seleccionar Icono" icon_name="circle_plus" class="row-start-1 row-span-2 col-start-2 col-span-1"></IconPicker>
+        </section>
+        <PopupMenu cards={CARDS} class= "top-[var(--popup-menu-top)]"></PopupMenu>
+
+</Layout>
+<style>
+        :root {
+                --popup-menu-top: 60%
+        }
+        section {
+                display: grid;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                grid-template: 1fr 1fr / 1fr 1fr;
+                
+        }
+        
+</style>

@@ -1,0 +1,42 @@
+---
+
+interface Props {
+        text: string;
+        class?: string;
+}
+
+const {text, class: className} = Astro.props;
+
+
+---
+
+<button title="hola" class= {
+        `
+                bg-tertiary
+                flex justify-center items-center
+		rounded-3xl
+		border-b-[4px] border-[#0e858b] box-border
+		shadow-black/40 shadow-md
+                overflow-hidden
+                ${className}
+        `
+}>{text}</button>
+<script>
+        var clicked = false
+        const popupEvent = new Event("popup")
+        function clickHandler() {
+                clicked = !clicked
+                if(clicked) {
+                        document.documentElement.style.setProperty('--popup-menu-top', '60%');
+                }
+                else {
+                        document.documentElement.style.setProperty('--popup-menu-top', '100%');
+                }
+        }
+
+        const button = document.querySelector('button');
+        button?.addEventListener('click', clickHandler);
+        button?.addEventListener('click', () => {
+                window.dispatchEvent(popupEvent);
+        })
+</script>

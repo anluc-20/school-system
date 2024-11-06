@@ -1,0 +1,11 @@
+---
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<div class="bg-primary py-4 flex justify-center">
+  <p class="text-white text-2xl">{title}</p>
+</div>
