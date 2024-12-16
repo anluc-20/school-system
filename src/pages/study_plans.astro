@@ -1,20 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { type CardTextData } from "../models/CardTextData";
-import {
-        type StudyPlanCardResponse,
-        STUDY_PLAN_CARD_API_URL,
-} from "../components/response/StudyPlanCard";
-import CardAlt from "../components/CardAlt.astro";
-import CardAddNew from "../components/CardAddNew.astro";
+import CardAlt from "../components/astro/CardAlt.astro";
+import CardAddNew from "../components/astro/CardAddNew.astro";
+import { getStudyPlans } from "../services/studyPlans";
 
 export const prerender = false;
 
-const response = await fetch(STUDY_PLAN_CARD_API_URL).then((response) =>
-        response.json(),
-);
-const data: StudyPlanCardResponse[] = response.data;
-const CARDS: CardTextData[] = data.map((card) => {
+const studyPlans = await getStudyPlans();
+const CARDS: CardTextData[] = studyPlans.map((card) => {
         return {
                 title: card.associated_Subject + " | " + card.year_Of_Creation,
         };
@@ -26,14 +20,15 @@ const CARDS: CardTextData[] = data.map((card) => {
         <nav class="flex flex-wrap justify-evenly pt-6 gap-y-3">
                 <CardAddNew title="Nuevo plan" href="/subjects/new" card_class="w-40 h-10" icon_class="size-full text-white stroke-1"/>
                 {
-                        CARDS.map((card) => (
+                        CARDS.length > 0? (CARDS.map((card) => (
                                 <a href={card.href}>
                                         <CardAlt
                                                 class="w-40 h-10"
                                                 title={card.title}
                                         ></CardAlt>
                                 </a>
-                        ))
+                        ))) :
+                        <p>¡Vaya! Parece que aún no hay planes de estudio.</p>
                 }
         </nav>
 </Layout>

@@ -1,7 +1,7 @@
 ---
 import Card from "./Card.astro";
 import CardAlt from "./CardAlt.astro";
-import Icon from "./icons/Icon.astro";
+import Icon from "../icons/Icon.astro";
 import SearchBar from "./SearchBar.astro";
 
 interface Cards {
@@ -42,6 +42,3 @@ const {class: className, cards} = Astro.props;
                 }
         </section>
 </nav>
-<script>
-        addEventListener("popup", ()=> {console.log("el boton se ha presionado")})
-</script>
