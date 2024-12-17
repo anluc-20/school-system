@@ -1,33 +1,98 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function useFetch<Type>(func: () => Promise<Type[]>) {
-    const [data, setData] = useState<Type[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<Error | null>(null);
 
-    const fetchData = async () => {
-        if(data.length > 0) return;
-        try {
-            setLoading(true);
-            setError(null);
-            const result = await func();
-            setData(result);
-        } catch (err: unknown) {
-            if (err instanceof Error) {
-                setError(err);
-            } else {
-                setError(new Error('An unexpected error occurred'));
-            }
-        } finally {
-            setLoading(false);
-            console.log("data fetched!");
+export function useMappedFetch<T,U>(
+    fetchData: () => Promise<T[]>,
+    mapCriteria: (value: T) => U,
+) {
+    //const [data, setData] = useState<T[]>();
+    const [mappedData, setMappedData] = useState<U[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<Error>();
+    const [controller, setController] = useState<AbortController>();
+    const [refetch, setRefetch] = useState(false);
+
+    useEffect(() => {
+        const abortController = new AbortController();
+        setController(abortController);
+        setLoading(true);
+
+        fetchData()
+            .then((data) => {
+                setMappedData(data.map(mapCriteria));
+            })
+            .catch((error) => {
+                if(error.name === "AbortError")
+                    console.log("Request cancelled");
+                else
+                    setError(error);
+            })
+            .finally(() => setLoading(false));
+
+        return () => abortController.abort();
+    }, [refetch]);
+
+    const handleCancelRequest = () => {
+        if (controller) {
+            controller.abort();
+            setError(new Error("Request cancelled"));
         }
+    }
+
+    const refetchData = () => setRefetch(true);
+
+    return {
+        mappedData,
+        loading,
+        error,
+        handleCancelRequest,
+        refetchData,
     };
+}
+
+export function useFetch<T>(
+    fetchData: () => Promise<T[]>,
+) {
+    const [data, setData] = useState<T[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<Error>();
+    const [controller, setController] = useState<AbortController>();
+    const [refetch, setRefetch] = useState(false);
+
+    useEffect(() => {
+        const abortController = new AbortController();
+        setController(abortController);
+        setLoading(true);
+
+        fetchData()
+            .then((data) => {
+                setData(data);
+            })
+            .catch((error) => {
+                if(error.name === "AbortError")
+                    console.log("Request cancelled");
+                else
+                    setError(error);
+            })
+            .finally(() => setLoading(false));
+
+        return () => abortController.abort();
+    }, [refetch]);
+
+    const handleCancelRequest = () => {
+        if (controller) {
+            controller.abort();
+            setError(new Error("Request cancelled"));
+        }
+    }
+
+    const refetchData = () => setRefetch(true);
 
     return {
         data,
         loading,
         error,
-        fetchData
+        handleCancelRequest,
+        refetchData,
     };
 }
