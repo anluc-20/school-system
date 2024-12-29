@@ -1,9 +1,9 @@
-import Card from "./Card.tsx";
-import CardAlt from "./CardAlt.tsx";
+import Card from "./Cards/Card.tsx";
+import CardAlt from "./Cards/CardAlt.tsx";
 import SearchBar from "./SearchBar.tsx";
 
 import type { CardProps } from "../models/CardProps.ts";
-import CardAddNew from "./CardAddNew.tsx";
+import CardAddNew from "./Cards/CardAddNew.tsx";
 import { useState } from "react";
 
 

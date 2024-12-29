@@ -29,6 +29,7 @@ function BottomList({children, show, className, hidden}: Props) {
     if (React.isValidElement(child) && child.props.id) {
       return child.props.id.toLowerCase().includes(input.toLowerCase());
     }
+    console.log("wrong")
     return false;
   });
 

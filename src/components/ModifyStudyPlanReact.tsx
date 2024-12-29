@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactElement } from "react";
 import useStudyPlanEffect from "../hooks/useStudyPlan";
 import ButtonAlt from "./ButtonAlt";
-import CardAddNew from "./CardAddNew";
+import CardAddNew from "./Cards/CardAddNew.tsx";
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,17 +12,17 @@ import 'swiper/css';
 import './swiperStyles.css'
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import TopicCard from "./TopicCard.tsx";
+import TopicCard from "./Cards/TopicCard.tsx";
 import type { TopicCardProps } from "../models/TopicCardProps.ts";
 import {useTopicEffect, useTopicByIdEffect} from "../hooks/useTopic.tsx";
 import BottomList, { BottomListItem, type BottomListItemProps } from "./BottomList.tsx";
-import CardAlt from "./CardAlt.tsx";
+import CardAlt from "./Cards/CardAlt.tsx";
 import { TopicList } from "../models/TopicList.ts";
 import { DeleteButton } from "./DeleteButton.tsx";
 import AddButton from "./AddButton.tsx";
 import TextAreaInput from "./TextAreaInput.tsx";
 import TextInput from "./TextInput.tsx";
-import TopicCardInput from "./TopicCardInput.tsx";
+import TopicCardInput from "./Cards/TopicCardInput.tsx";
 import type { CustomResponse } from "../response/CustomResponse.ts";
 import { modifyTopicStudyPlan } from "../services/topicsStudyPlans.ts";
 

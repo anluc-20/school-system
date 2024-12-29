@@ -1,6 +1,6 @@
-import { type TopicCardProps } from '../models/TopicCardProps.ts';
-import { DeleteButton } from './DeleteButton.tsx';
-import EditButton from './EditButton.tsx';
+import { type TopicCardProps } from '../../models/TopicCardProps.ts';
+import { DeleteButton } from '../DeleteButton.tsx';
+import EditButton from '../EditButton.tsx';
 
 function TopicCard({ topic_id, topic_name, description, onClick, onDelete, onEdit, relationship_id, showExtra}: TopicCardProps) {
   return (

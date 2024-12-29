@@ -1,5 +1,5 @@
-import Icon from './icons/Icon.tsx'
-import { type CardProps } from '../models/CardProps.ts';
+import Icon from '../icons/Icon.tsx'
+import { type CardProps } from '../../models/CardProps.ts';
 
 const defaultIcon = "question"
 

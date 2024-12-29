@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { type TopicRequest } from "../request/TopicRequest";
-import AddButton from "./AddButton";
-import { DeleteButton } from "./DeleteButton";
-import type { CustomResponse } from "../response/CustomResponse";
-import { addTopic } from "../services/topics";
+import { type TopicRequest } from "../../request/TopicRequest";
+import AddButton from "../AddButton";
+import { DeleteButton } from "../DeleteButton";
+import type { CustomResponse } from "../../response/CustomResponse";
+import { addTopic } from "../../services/topics";
 
 interface Props {
   className?: string;

@@ -1,5 +1,5 @@
-import Card from "./Card";
-import CardAlt from "./CardAlt"
+import Card from "./Cards/Card";
+import CardAlt from "./Cards/CardAlt"
 import Icon from "./icons/Icon";
 
 interface EditButtonProps {

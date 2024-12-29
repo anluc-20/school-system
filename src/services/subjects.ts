@@ -1,5 +1,4 @@
 import { type SubjectCardResponse, SUBJECT_API_URL, SUBJECT_CARD_API_URL } from "../response/SubjectCard"
-import { type CustomResponse } from "../response/CustomResponse";
 import type { SubjectRequest } from "../request/SubjectRequest";
 import { addData, getData } from "./fetchData";
 

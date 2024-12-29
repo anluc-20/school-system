@@ -1,0 +1,27 @@
+---
+import AddButton from "../components/AddButton";
+import IndividualCard from "../components/Cards/IndividualCard";
+import IndividualList from "../components/IndividualList";
+import Layout from "../layouts/Layout.astro";
+import { getStudent } from "../services/individuals";
+
+const students = await getStudent()
+
+---
+
+<Layout title="Alumnos">
+    <div class="flex flex-col gap-3">
+        <li>
+            {
+                students.map((student) => (
+                    <ol>
+                        <IndividualCard id={student.id} lastName={student.last_Name} firstName={student.first_Name}/>
+                    </ol>
+                ))
+            }
+        </li>
+        <a  href="add_student">
+            <AddButton className="w-full"/>
+        </a>
+    </div>
+</Layout>
