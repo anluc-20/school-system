@@ -1,0 +1,26 @@
+---
+import CardAlt from "../components/Cards/CardAlt";
+import Layout from "../layouts/Layout.astro";
+import { getClassGroups } from "../services/classGroups";
+import AddButton from "../components/AddButton";
+
+const classGroups = await getClassGroups(); 
+
+---
+
+<Layout title="COMISIONES">
+    <div class="flex flex-col gap-3">
+        <li>
+            {
+                classGroups.map((classGroup) => (
+                    <ol>
+                        <CardAlt id={classGroup.id} title={`${classGroup.class_Group_Name} | ${classGroup.topic_Name}`}/>
+                    </ol>
+                ))
+            }
+        </li>
+        <a  href="add_class_group">
+            <AddButton className="w-full"/>
+        </a>
+    </div>
+</Layout>
