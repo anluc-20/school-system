@@ -10,5 +10,5 @@ export interface PartialClassGroupResponse {
     topic_Name: string,
 }
 
-export const CLASS_GROUP_API_URL = "https://localhost:7054/api/classgroups";
+export const CLASS_GROUP_API_URL = `${import.meta.env.PUBLIC_BASE_API_URL}/classgroups`;
 export const getUrlById = (id: number) => `${CLASS_GROUP_API_URL}/${id}`;

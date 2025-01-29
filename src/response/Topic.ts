@@ -4,4 +4,4 @@ export interface TopicResponse {
     description: string;
 }
 
-export const TOPIC_API_URL = "https://localhost:7054/api/topics"
+export const TOPIC_API_URL = `${import.meta.env.PUBLIC_BASE_API_URL}/topics`

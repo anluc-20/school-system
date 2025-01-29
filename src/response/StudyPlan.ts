@@ -4,4 +4,4 @@ export interface StudyPlanResponse {
         associated_Subject: string; 
 }
 
-export const STUDY_PLAN_API_URL = "https://localhost:7054/api/studyplans";
+export const STUDY_PLAN_API_URL = `${import.meta.env.PUBLIC_BASE_API_URL}/studyplans`;

@@ -1,6 +1,7 @@
 import type { CustomResponse } from "../response/CustomResponse";
 
 export async function getData<T>(apiUrl: string): Promise<T[]> {
+    console.log(apiUrl);
     const response: CustomResponse<T> =
         await fetch(apiUrl)
             .then((response) => response.json())

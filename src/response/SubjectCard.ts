@@ -4,5 +4,5 @@ export interface SubjectCardResponse {
   icon_Name: string;
 }
 
-export const SUBJECT_CARD_API_URL = "https://localhost:7054/api/subjectscard";
-export const SUBJECT_API_URL = "https://localhost:7054/api/subjects";
+export const SUBJECT_CARD_API_URL = `${import.meta.env.PUBLIC_BASE_API_URL}/subjectscard`;
+export const SUBJECT_API_URL = `${import.meta.env.PUBLIC_BASE_API_URL}/subjects`;

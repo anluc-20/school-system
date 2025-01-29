@@ -4,5 +4,5 @@ export interface IndividualResponse {
     last_Name: string,
 }
 
-export const STUDENT_API_URL = "https://localhost:7054/api/individuals/students";
-export const INSTRUCTOR_API_URL = "https://localhost:7054/api/individuals/instructors";
+export const STUDENT_API_URL = `${import.meta.env.PUBLIC_BASE_API_URL}/students`;
+export const INSTRUCTOR_API_URL = `${import.meta.env.PUBLIC_BASE_API_URL}/instructors`;
