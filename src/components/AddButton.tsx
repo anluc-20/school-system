@@ -1,5 +1,3 @@
-import Card from "./Cards/Card";
-import CardAlt from "./Cards/CardAlt"
 import Icon from "./icons/Icon";
 
 interface CardAddNewProps {
@@ -8,7 +6,7 @@ interface CardAddNewProps {
   onAdd?: ()=>void;
 }
 
-function AddButton({ href, className, onAdd}: CardAddNewProps) {
+function AddButton({ className, onAdd}: CardAddNewProps) {
   return (
     <button
         onClick={onAdd}

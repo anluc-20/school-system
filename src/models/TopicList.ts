@@ -1,4 +1,4 @@
-import { Operation, type EntityOperationsRequest } from "../request/EntityOperationsRequest";
+import { Operation, type EntityOperation, type EntityOperationsRequest } from "../request/EntityOperationsRequest";
 
 interface TopicRelationIds {
     topic_id: number;
@@ -53,16 +53,14 @@ export class TopicList {
             [
                 ...this.original
                     .slice(0, Math.min(this.original.length, this.new_topic_ids.length))
-                    .map((topicRelation, i) => {
-                        if(topicRelation.topic_id !== this.new_topic_ids[i]) {
+                    .filter((topicRelation, i) => topicRelation.topic_id !== this.new_topic_ids[i])
+                    .map((topicRelation, i): EntityOperation => {
                             return {
                                 replacement_id: this.new_topic_ids[i],
                                 relationship_id: topicRelation.relation_id,
                                 operation: Operation.MODIFY,
                             }
-                        }
-                    })
-                    .filter((action) => action !== undefined),
+                    }),
                 ...this.new_topic_ids
                     .slice(this.original.length)
                     .map((topic_id) => {

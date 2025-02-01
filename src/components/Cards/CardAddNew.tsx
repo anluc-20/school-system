@@ -1,5 +1,4 @@
 import Card from "./Card";
-import CardAlt from "./CardAlt"
 
 interface CardAddNewProps {
   title: string;

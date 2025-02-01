@@ -1,4 +1,4 @@
-import { getIcon, iconMap } from "./iconConfig";
+import { getIcon } from "./iconConfig";
 
 
 interface IconProps {

@@ -9,7 +9,6 @@ function IndividualCard({
     id,
     firstName,
     lastName,
-    onClick,
 }: IndividualProps) {
     return (
         <div className={

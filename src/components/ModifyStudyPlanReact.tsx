@@ -20,8 +20,6 @@ import CardAlt from "./Cards/CardAlt.tsx";
 import { TopicList } from "../models/TopicList.ts";
 import { DeleteButton } from "./DeleteButton.tsx";
 import AddButton from "./AddButton.tsx";
-import TextAreaInput from "./TextAreaInput.tsx";
-import TextInput from "./TextInput.tsx";
 import TopicCardInput from "./Cards/TopicCardInput.tsx";
 import type { CustomResponse } from "../response/CustomResponse.ts";
 import { modifyTopicStudyPlan } from "../services/topicsStudyPlans.ts";

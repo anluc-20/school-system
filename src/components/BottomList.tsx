@@ -7,7 +7,7 @@ export interface BottomListItemProps{
   children: React.ReactNode;
 }
 
-export function BottomListItem({id, children}: BottomListItemProps) {
+export function BottomListItem({children}: BottomListItemProps) {
   return children;
 }
 

@@ -1,4 +1,3 @@
-import Icon from '../icons/Icon.tsx'
 import { type CardProps } from '../../models/CardProps.ts';
 
 function CardAlt({ id, title, className, onClick }: CardProps) {

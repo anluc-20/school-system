@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 import node from "@astrojs/node";
 
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 // https://astro.build/config
 export default defineConfig({

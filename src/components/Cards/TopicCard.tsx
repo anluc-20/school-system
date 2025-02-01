@@ -1,8 +1,7 @@
 import { type TopicCardProps } from '../../models/TopicCardProps.ts';
-import { DeleteButton } from '../DeleteButton.tsx';
 import EditButton from '../EditButton.tsx';
 
-function TopicCard({ topic_id, topic_name, description, onClick, onDelete, onEdit, relationship_id, showExtra}: TopicCardProps) {
+function TopicCard({ topic_id, topic_name, description, onClick, onEdit, showExtra}: TopicCardProps) {
   return (
     <>
     {onEdit && <EditButton onEdit={() => onEdit(topic_id)} className='absolute top-6 left-6'/>}

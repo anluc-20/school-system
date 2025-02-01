@@ -1,5 +1,3 @@
-import Card from "./Cards/Card";
-import CardAlt from "./Cards/CardAlt"
 import Icon from "./icons/Icon";
 
 interface EditButtonProps {
@@ -8,7 +6,7 @@ interface EditButtonProps {
   onEdit?: ()=>void;
 }
 
-function EditButton({ href, className, onEdit}: EditButtonProps) {
+function EditButton({ className, onEdit}: EditButtonProps) {
   return (
     <button
         onClick={onEdit}
